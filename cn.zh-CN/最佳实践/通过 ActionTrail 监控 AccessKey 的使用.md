@@ -27,10 +27,10 @@
 4.  打开**是否开启日志记录**开关。
 5.  单击**提交**，结束配置。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154026127913881_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154285129813881_zh-CN.png)
 
 
-成功新建跟踪任务后，ActionTrail 会将所有地域的审计事件都投递到指定的 logstore 中。
+成功新建跟踪任务后，ActionTrail 会将所有地域的审计事件都投递到指定的 Logstore 中。
 
 ## 配置日志服务 {#section_djx_gk2_lfb .section}
 
@@ -43,24 +43,30 @@
 
     **说明：** 单击页面右上角的**另存为快速查询**，将查询参数保存为快速查询。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154026127913882_zh-CN.png)
+    查询语句举例：
 
-5.  基于快速查询创建报警。
+    ```
+    event.userIdentity.accessKeyId: "LTAIT04MwpKReB7Z" | select count(1) as use_ak_LTAIT04MwpKReB7Z
+    ```
 
-    其中**检查间隔**设置为 5，即每隔 5 分钟检查最近 10 分钟的数据。如果**LTAIT04MwpKReB7Z**在十分钟内被用过一次，那么就报警。
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154285129813882_zh-CN.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154026127913884_zh-CN.png)
+5.  基于快速查询创建报警，单击页面右上角的**另存为告警**。
+
+    **说明：** 其中**检查间隔**设置为 5，即每隔 5 分钟检查最近 10 分钟的数据。如果`accessKeyId`（举例如下：TAIT04MwpKReB7Z）在十分钟内被用过一次，那么就报警。
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154285129813884_zh-CN.png)
 
 
-收到的报警如下所示：
+收到的报警内容举例如下：
 
 【阿里云】日志服务告警：账号 71887*\*\**@qq.com下项目henshao-test-send-sls-600/触发器use\_ak\_b7z生效2 \> 1，内容AccessKey: LTAIT04MwpKReB7Z 正在被使用，上下文\[use\_ak\_LTAIT04MwpKReB7Z:2\]
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154026127913885_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154285129813885_zh-CN.png)
 
 创建的快速查询和报警均可在项目界面进行查看和管理。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154026127913886_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23638/154285129813886_zh-CN.png)
 
-日志服务支持通知中心、短信、钉钉机器人和自定义 WebHook 等几种报警方式，您可以根据自身需求，选择合适的报警方式。请参考：[通知方式](../../../../cn.zh-CN/用户指南/告警与通知/通知方式.md#) 。
+日志服务支持通知中心、短信、钉钉机器人和自定义 WebHook 等多种报警方式，您可以根据自身需求，选择合适的报警方式。详见[通知方式](../../../../intl.zh-CN/用户指南/告警/通知方式.md#) 。
 
